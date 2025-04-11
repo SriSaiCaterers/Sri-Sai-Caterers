@@ -117,3 +117,25 @@ button:hover {
   background: linear-gradient(to right, #1ebd5a, #075e54);
   transform: scale(1.02);
 }
+footer {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #e6ffe6;
+  border-radius: 10px;
+  text-align: center;
+}
+
+footer h3 {
+  margin: 0;
+  color: #004d1a;
+}
+
+footer a {
+  color: #007b33;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
