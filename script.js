@@ -38,6 +38,101 @@ const menuItems = {
     "Aloo Tomato",
     "Aloo Capsicum",
     "Chikudikaya Tomato",
+  ],
+  fry:[
+    "Baby Corn 65",
+    "Cabbage 65",
+    "Dondakai 65",
+    "Aloo 65",
+    "Gobi 65",
+    "Dondakai Oil Fry",
+    "Bendakai Oil Fry",
+    "Aloo Fry",
+    "Aratikai Kobbari",
+    "Vankai Fry",
+    "Cabbage Fry",
+    "Aloo Menthikura",
+  ],
+  dal:[
+    "Mamidikai Pappu",
+    "Menthikura Pappu",
+    "Paalakura Pappu",
+    "ThotaKura Pappu",
+    "Tomato Pappu",
+    "Gongura Pappu",
+    "Mulakkada Pappu",
+  ],
+  sambar:[
+    "Majjiga Charu",
+    "Majjiga Pulusu",
+    "Rasam",
+    "Sambar",
+    "Oolva Charu",
+    "Pachi Pulusu",
+  ],
+  curd:[
+    "Curd",
+    "Raita",
+  ],
+  rotichutney:[
+    "Beerakai",
+    "Gongura",
+    "Dondakai",
+    "Kothimeera",
+    "Mullangi",
+    "Sorakai",
+    "vankai",
+    "Tomato",
+    "Dosakaya",
+  ],
+  sweets:[
+    "Badusha",
+    "Bobbatlu",
+    "Pornam",
+    "Boondi Laddu",
+    "carrot Halwa",
+    "Sorakaya Halwa",
+    "Cheekara Pongal",
+    "Double Ka Meeta",
+    "Gulab Jaamun",
+    "Rava Kesari",
+    "Sagubiyyam Payasam(sugar)",
+    "Sagubiyyam payasam(bellam)",
+  ],
+  hot:[
+    "Aloo Samosa",
+    "Aratikai Bajji",
+    "Mirchi Bajji",
+    "Thamalapak Bajji",
+    "Thamalapak Vada",
+    "Masala Vada",
+    "Gaari",
+    "Sweet Corn Samosa",
+  ],
+  chips:[
+    "Chips",
+    "Dahi Mirchi",
+    "Papad",
+    "Minapa Vadiyalu",
+    "Podi",
+    "Ghee",
+  ],
+  pickels:[
+    "Aavakai",
+    "Lemon",
+    "Tomato",
+  ],
+  extraitems:[
+    "Fruit Salad",
+    "Ice Cream",
+    "Sweet Paan,Paan",
+    "Veg Cutlets",
+    "Veg Machuria",
+    "Welcome Drink",
+  ],
+  extraservice:[
+    "Boys",
+    "Water",
   ]
 };
 
@@ -60,8 +155,25 @@ function loadMenu() {
       limitNote = " (any 1)";
     } else if(category === "curry") {
       limitNote = " (any1)";
+    } else if(category === "fry") {
+      limitNote = " (any1)";
+    } else if(category === "dal") {
+      limitNote = " (any1)";
+    } else if(category === "sambar") {
+      limitNote = " (any1)";
+    } else if(category === "curd") {
+      limitNote = " (any2)";
+    } else if(category === "rotichutney") {
+      limitNote = " (any1)";
+    } else if(category === "sweets") {
+      limitNote = " (any1)";
+    } else if(category === "hot") {
+      limitNote = " (any1)";
+    } else if(category === "chips") {
+      limitNote = " (any5)";
+    } else if(category === "pickels") {
+      limitNote = " (any1)";
     }
-
     heading.innerText = `${category.charAt(0).toUpperCase() + category.slice(1)} Items${limitNote}`;
     section.appendChild(heading);
 
@@ -100,14 +212,27 @@ function updatePreview() {
 
 function sendToWhatsApp() {
   const members = document.getElementById("members").value;
+  const functionDate = document.getElementById("functionDate").value;
+  const functionTime = document.getElementById("functionTime").value;
+
 
   if (!members) {
     alert("Please enter the number of members.");
     return;
   }
 
-  let message = `Sri Sai Caterers Order\n`;
-  message += `Members: ${members}\n\n`;
+const now = new Date();
+const date = now.toLocaleDateString();
+const time = now.toLocaleTimeString();
+
+let message = `Sri Sai Caterers Order\n`;
+message += `Order Date: ${date}\n`;
+message += `Order Time: ${time}\n`;
+message += `Function Date: ${functionDate}\n`;
+message += `Function Time: ${functionTime}\n`;
+message += `Members: ${members}\n\n`;
+
+
 
   Object.keys(menuItems).forEach(category => {
     const selected = Array.from(document.querySelectorAll(`.menu-item.${category}.selected`)).map(el => el.innerText);
