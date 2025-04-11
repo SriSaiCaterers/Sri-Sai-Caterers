@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sri Sai Caterers - Veg Menu</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Sri Sai Caterers</h1>
+
+    <label for="members">Number of Members:</label>
+    <input type="number" id="members" placeholder="e.g., 50" />
+
+    <div id="menu" class="menu-section"></div>
+
+    <div id="preview" class="preview-section">
+      <h3>Selected Items</h3>
+      <div id="selectedPreview"></div>
+    </div>
+
+    <div class="footer">
+      <button onclick="sendToWhatsApp()">Send Order via WhatsApp</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
