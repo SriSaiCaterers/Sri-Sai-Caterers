@@ -16,21 +16,16 @@ const menuItems = {
     "Mushroom Biryani",
     "Kaju Biryani",
   ],
-  roti: [
-    "Chapathi",
-    "Pulka",
-    "Poori",
-    "Rumal Roti",
-  ],
+  roti: ["Chapathi", "Pulka", "Poori", "Rumal Roti"],
   gravycurry: [
     "paneer Curry",
     "Mixed Veg Curry",
     "Chenna Masala Curry",
     "Pool Makani",
     "Baby Corn Curry",
-    "Kaju Curry"
+    "Kaju Curry",
   ],
-  curry:[
+  curry: [
     "Allam Mirchi Vankai",
     "Guthi Vankai",
     "Kaju Mulakada",
@@ -39,7 +34,7 @@ const menuItems = {
     "Aloo Capsicum",
     "Chikudikaya Tomato",
   ],
-  fry:[
+  fry: [
     "Baby Corn 65",
     "Cabbage 65",
     "Dondakai 65",
@@ -53,7 +48,7 @@ const menuItems = {
     "Cabbage Fry",
     "Aloo Menthikura",
   ],
-  dal:[
+  dal: [
     "Mamidikai Pappu",
     "Menthikura Pappu",
     "Paalakura Pappu",
@@ -62,7 +57,7 @@ const menuItems = {
     "Gongura Pappu",
     "Mulakkada Pappu",
   ],
-  sambar:[
+  sambar: [
     "Majjiga Charu",
     "Majjiga Pulusu",
     "Rasam",
@@ -70,11 +65,8 @@ const menuItems = {
     "Oolva Charu",
     "Pachi Pulusu",
   ],
-  curd:[
-    "Curd",
-    "Raita",
-  ],
-  rotichutney:[
+  curd: ["Curd", "Raita"],
+  rotichutney: [
     "Beerakai",
     "Gongura",
     "Dondakai",
@@ -85,7 +77,7 @@ const menuItems = {
     "Tomato",
     "Dosakaya",
   ],
-  sweets:[
+  sweets: [
     "Badusha",
     "Bobbatlu",
     "Pornam",
@@ -99,7 +91,7 @@ const menuItems = {
     "Sagubiyyam Payasam(sugar)",
     "Sagubiyyam payasam(bellam)",
   ],
-  hot:[
+  hot: [
     "Aloo Samosa",
     "Aratikai Bajji",
     "Mirchi Bajji",
@@ -109,7 +101,7 @@ const menuItems = {
     "Gaari",
     "Sweet Corn Samosa",
   ],
-  chips:[
+  chips: [
     "Chips",
     "Dahi Mirchi",
     "Papad",
@@ -117,12 +109,8 @@ const menuItems = {
     "Podi",
     "Ghee",
   ],
-  pickels:[
-    "Aavakai",
-    "Lemon",
-    "Tomato",
-  ],
-  extraitems:[
+  pickels: ["Aavakai", "Lemon", "Tomato"],
+  extraitems: [
     "Fruit Salad",
     "Ice Cream",
     "Sweet Paan,Paan",
@@ -130,10 +118,7 @@ const menuItems = {
     "Veg Machuria",
     "Welcome Drink",
   ],
-  extraservice:[
-    "Boys",
-    "Water",
-  ]
+  extraservice: ["Boys", "Water"],
 };
 
 function loadMenu() {
@@ -153,34 +138,36 @@ function loadMenu() {
       limitNote = " (any 1)";
     } else if (category === "gravycurry") {
       limitNote = " (any 1)";
-    } else if(category === "curry") {
+    } else if (category === "curry") {
       limitNote = " (any1)";
-    } else if(category === "fry") {
+    } else if (category === "fry") {
       limitNote = " (any1)";
-    } else if(category === "dal") {
+    } else if (category === "dal") {
       limitNote = " (any1)";
-    } else if(category === "sambar") {
+    } else if (category === "sambar") {
       limitNote = " (any1)";
-    } else if(category === "curd") {
+    } else if (category === "curd") {
       limitNote = " (any2)";
-    } else if(category === "rotichutney") {
+    } else if (category === "rotichutney") {
       limitNote = " (any1)";
-    } else if(category === "sweets") {
+    } else if (category === "sweets") {
       limitNote = " (any1)";
-    } else if(category === "hot") {
+    } else if (category === "hot") {
       limitNote = " (any1)";
-    } else if(category === "chips") {
+    } else if (category === "chips") {
       limitNote = " (any5)";
-    } else if(category === "pickels") {
+    } else if (category === "pickels") {
       limitNote = " (any1)";
     }
-    heading.innerText = `${category.charAt(0).toUpperCase() + category.slice(1)} Items${limitNote}`;
+
+    heading.innerText =
+      `${category.charAt(0).toUpperCase() + category.slice(1)} Items${limitNote}`;
     section.appendChild(heading);
 
     const column = document.createElement("div");
     column.className = "menu-column";
 
-    items.forEach(item => {
+    items.forEach((item) => {
       const itemDiv = document.createElement("div");
       itemDiv.className = `menu-item ${category}`;
       itemDiv.innerText = item;
@@ -200,11 +187,15 @@ function updatePreview() {
   const preview = document.getElementById("selectedPreview");
   preview.innerHTML = "";
 
-  Object.keys(menuItems).forEach(category => {
-    const selected = Array.from(document.querySelectorAll(`.menu-item.${category}.selected`)).map(el => el.innerText);
+  Object.keys(menuItems).forEach((category) => {
+    const selected = Array.from(
+      document.querySelectorAll(`.menu-item.${category}.selected`)
+    ).map((el) => el.innerText);
     if (selected.length > 0) {
       const section = document.createElement("div");
-      section.innerHTML = `<strong>${category.toUpperCase()}:</strong><br>` + selected.map(i => `• ${i}`).join("<br>");
+      section.innerHTML =
+        `<strong>${category.toUpperCase()}:</strong><br>` +
+        selected.map((i) => `• ${i}`).join("<br>");
       preview.appendChild(section);
     }
   });
@@ -215,29 +206,33 @@ function sendToWhatsApp() {
   const functionDate = document.getElementById("functionDate").value;
   const functionTime = document.getElementById("functionTime").value;
 
-
   if (!members) {
     alert("Please enter the number of members.");
     return;
   }
 
-const now = new Date();
-const date = now.toLocaleDateString();
-const time = now.toLocaleTimeString();
+  const now = new Date();
+  const date = now.toLocaleDateString();
+  const time = now.toLocaleTimeString();
 
-let message = `Sri Sai Caterers Order\n`;
-message += `Order Date: ${date}\n`;
-message += `Order Time: ${time}\n`;
-message += `Function Date: ${functionDate}\n`;
-message += `Function Time: ${functionTime}\n`;
-message += `Members: ${members}\n\n`;
+  let message = `Sri Sai Caterers Order\n`;
+  message += `Order Date: ${date}\n`;
+  message += `Order Time: ${time}\n`;
+  message += `Function Date: ${functionDate}\n`;
+  message += `Function Time: ${functionTime}\n`;
+  message += `Members: ${members}\n\n`;
 
+  Object.keys(menuItems).forEach((category) => {
+    const selected = Array.from(
+      document.querySelectorAll(`.menu-item.${category}.selected`)
+    ).map((el) => el.innerText);
 
-
-  Object.keys(menuItems).forEach(category => {
-    const selected = Array.from(document.querySelectorAll(`.menu-item.${category}.selected`)).map(el => el.innerText);
     if (selected.length > 0) {
-      message += `${category.toUpperCase()}:\n${selected.map(item => `• ${item}`).join("\n")}\n\n`;
+      const heading = category.toUpperCase();
+      const underline = "‾".repeat(heading.length);
+      message += `*${heading}*\n${underline}\n${selected
+        .map((item) => `• ${item}`)
+        .join("\n")}\n\n`;
     }
   });
 
