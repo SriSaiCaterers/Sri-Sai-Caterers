@@ -15,6 +15,7 @@ const menuItems = {
     "Paneer Biryani",
     "Mushroom Biryani",
     "Kaju Biryani",
+    "Panaskaya Biryani",
   ],
   roti: [
     "Chapathi",
