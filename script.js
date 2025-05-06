@@ -87,6 +87,7 @@ const menuItems = {
     "Sorakaya Halwa",
     "Cheekara Pongal",
     "Double Ka Meeta",
+    "Kala Jaamun",
     "Gulab Jaamun",
     "Rava Kesari",
     "Sagubiyyam Payasam(sugar)",
